@@ -26,7 +26,7 @@ const Header = () => {
       <div className="max-w-7xl mx-auto flex justify-between items-center">
         <a href="/" className="block">
           <img 
-            src="./logo.png" 
+            src="/logo.png" 
             alt="MindX Technology School" 
             className="h-20 md:h-24 object-contain"
           />
