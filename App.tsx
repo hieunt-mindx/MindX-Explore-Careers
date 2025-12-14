@@ -1,33 +1,34 @@
-import React, { useState, useMemo } from 'react';
-import { 
-  Rocket, 
-  Code, 
-  Gamepad2, 
-  Monitor, 
-  ArrowRight, 
-  CheckCircle2, 
-  RefreshCcw,
-  Target,
-  PenTool,
+import {
+  ArrowRight,
   BrainCircuit,
-  Plane,
+  CheckCircle2,
   ChevronRight,
+  Code,
+  Gamepad2,
+  Monitor,
+  PenTool,
+  Plane,
+  RefreshCcw,
+  Rocket,
+  Target,
   TrendingUp
 } from 'lucide-react';
+import { Option, Question, ScoreProfile, TrackType } from './types';
+import React, { useMemo, useState } from 'react';
+
 import { QUIZ_DATA } from './constants';
-import { TrackType, Question, ScoreProfile, Option } from './types';
 
 // --- Sub-Components ---
 
 const Header = () => {
   return (
-    <header className="absolute top-0 left-0 w-full p-6 z-50">
+    <header className="absolute top-0 left-0 w-full z-50">
       <div className="max-w-7xl mx-auto flex justify-between items-center">
         <a href="/" className="block">
           <img 
             src="./logo.png" 
             alt="MindX Technology School" 
-            className="h-12 md:h-16 object-contain"
+            className="h-20 md:h-24 object-contain"
           />
         </a>
       </div>
