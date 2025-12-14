@@ -11,7 +11,8 @@ import {
   PenTool,
   BrainCircuit,
   Plane,
-  ChevronRight
+  ChevronRight,
+  TrendingUp
 } from 'lucide-react';
 import { QUIZ_DATA } from './constants';
 import { TrackType, Question, ScoreProfile, Option } from './types';
@@ -22,12 +23,15 @@ const Header = () => {
   return (
     <header className="absolute top-0 left-0 w-full p-6 z-50">
       <div className="max-w-7xl mx-auto flex justify-between items-center">
-        <a href="/" className="block">
-          <img 
-            src="./logo.png" 
-            alt="MindX Technology School" 
-            className="h-12 md:h-16 object-contain"
-          />
+        <a href="/" className="flex items-center gap-3 no-underline group">
+          {/* MindX Logo Icon Constructed via CSS */}
+          <div className="w-10 h-10 md:w-12 md:h-12 bg-[#E31F26] rounded-[10px] md:rounded-2xl flex items-center justify-center shadow-sm group-hover:scale-105 transition-transform duration-200">
+            <span className="text-white font-extrabold text-xl md:text-2xl font-sans select-none">M</span>
+          </div>
+          {/* MindX Logo Text */}
+          <span className="text-xl md:text-2xl font-extrabold text-[#111827] tracking-tight">
+            MindX <span className="text-[#E31F26]">School</span>
+          </span>
         </a>
       </div>
     </header>
@@ -244,17 +248,49 @@ const Result = ({
     });
 
     const maxScore = Math.max(counts.A, counts.B, counts.C);
+    // Priority tie-breaker: A > B > C (default logic, can be adjusted)
     const dominantType = counts.A === maxScore ? 'A' : counts.B === maxScore ? 'B' : 'C';
 
-    if (track === 'web') {
-      if (dominantType === 'A') return { title: 'Software Engineer', desc: 'Bạn có tư duy logic sắc bén, thích cấu trúc và tối ưu hóa hệ thống.', icon: <Code size={48} /> };
-      if (dominantType === 'B') return { title: 'AI Engineer', desc: 'Bạn có tầm nhìn chiến lược, quan tâm đến mục tiêu và giải pháp thông minh.', icon: <BrainCircuit size={48} /> };
-      return { title: 'Air Traffic Controller', desc: 'Bạn có khả năng điều phối, cảm nhận tốt về luồng trải nghiệm và thẩm mỹ.', icon: <Plane size={48} /> };
+    if (track === 'game') {
+      // GAME TRACK LOGIC
+      // A -> Software Engineer
+      // B -> AI Engineer
+      // C -> Air Traffic Controller
+      if (dominantType === 'A') return { 
+        title: 'Software Engineer', 
+        desc: 'Bạn sở hữu tư duy logic sắc bén, kỹ năng giải quyết vấn đề bằng thuật toán và đam mê sự chính xác kỹ thuật.', 
+        icon: <Code size={48} /> 
+      };
+      if (dominantType === 'B') return { 
+        title: 'AI Engineer', 
+        desc: 'Bạn có khả năng phân tích dữ liệu, nhận diện mô hình và thích ứng nhanh với các kịch bản phức tạp.', 
+        icon: <BrainCircuit size={48} /> 
+      };
+      return { 
+        title: 'Air Traffic Controller', 
+        desc: 'Bạn là bậc thầy của quy trình, sự tập trung và khả năng điều phối hệ thống vận hành an toàn.', 
+        icon: <Plane size={48} /> 
+      };
     } else {
-      // Game Track
-      if (dominantType === 'A') return { title: 'Software Engineer', desc: 'Tư duy logic, cấu trúc vững chắc là điểm mạnh của bạn trong thế giới Game.', icon: <Code size={48} /> };
-      if (dominantType === 'B') return { title: 'Business Mindset', desc: 'Bạn có tư duy mục tiêu, hiểu khách hàng và chiến thuật kinh doanh.', icon: <Target size={48} /> };
-      return { title: 'Content Creator', desc: 'Tư duy thẩm mỹ, sáng tạo và nghệ thuật là vũ khí bí mật của bạn.', icon: <PenTool size={48} /> };
+      // WEB TRACK LOGIC
+      // A -> Software Engineer (Logic)
+      // B -> Business (Target/Customer)
+      // C -> Content Creator (Aesthetic/Creative)
+      if (dominantType === 'A') return { 
+        title: 'Software Engineer', 
+        desc: 'Bạn có tư duy cấu trúc vững chắc, thích tối ưu hóa hệ thống và xây dựng nền tảng kỹ thuật mạnh mẽ.', 
+        icon: <Code size={48} /> 
+      };
+      if (dominantType === 'B') return { 
+        title: 'Business Analyst', 
+        desc: 'Bạn luôn hướng tới mục tiêu, thấu hiểu nhu cầu khách hàng và tập trung vào giá trị thực tế của sản phẩm.', 
+        icon: <TrendingUp size={48} /> 
+      };
+      return { 
+        title: 'Content Creator', 
+        desc: 'Tư duy thẩm mỹ, sự sáng tạo và khả năng truyền tải cảm xúc qua giao diện là thế mạnh của bạn.', 
+        icon: <PenTool size={48} /> 
+      };
     }
   }, [track, answers]);
 
