@@ -18,18 +18,21 @@ import { TrackType, Question, ScoreProfile, Option } from './types';
 
 // --- Sub-Components ---
 
-const Header = () => (
-  <header className="absolute top-0 left-0 w-full p-6 z-10">
-    <div className="max-w-7xl mx-auto flex justify-between items-center">
-      <div className="flex items-center gap-2">
-        <div className="w-10 h-10 bg-brand-red rounded-lg flex items-center justify-center text-white font-bold text-xl">
-          M
-        </div>
-        <span className="font-bold text-xl tracking-tight text-gray-900">MindX Technology School</span>
+const Header = () => {
+  return (
+    <header className="absolute top-0 left-0 w-full p-6 z-50">
+      <div className="max-w-7xl mx-auto flex justify-between items-center">
+        <a href="/" className="block">
+          <img 
+            src="./logo.png" 
+            alt="MindX Technology School" 
+            className="h-12 md:h-16 object-contain"
+          />
+        </a>
       </div>
-    </div>
-  </header>
-);
+    </header>
+  );
+};
 
 const Landing = ({ onStart }: { onStart: () => void }) => (
   <div className="min-h-screen flex flex-col justify-center items-center px-4 relative overflow-hidden bg-white">
