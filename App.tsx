@@ -23,15 +23,12 @@ const Header = () => {
   return (
     <header className="absolute top-0 left-0 w-full p-6 z-50">
       <div className="max-w-7xl mx-auto flex justify-between items-center">
-        <a href="/" className="flex items-center gap-3 no-underline group">
-          {/* MindX Logo Icon Constructed via CSS */}
-          <div className="w-10 h-10 md:w-12 md:h-12 bg-[#E31F26] rounded-[10px] md:rounded-2xl flex items-center justify-center shadow-sm group-hover:scale-105 transition-transform duration-200">
-            <span className="text-white font-extrabold text-xl md:text-2xl font-sans select-none">M</span>
-          </div>
-          {/* MindX Logo Text */}
-          <span className="text-xl md:text-2xl font-extrabold text-[#111827] tracking-tight">
-            MindX <span className="text-[#E31F26]">School</span>
-          </span>
+        <a href="/" className="block">
+          <img 
+            src="./logo.png" 
+            alt="MindX Technology School" 
+            className="h-12 md:h-16 object-contain"
+          />
         </a>
       </div>
     </header>
